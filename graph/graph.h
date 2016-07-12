@@ -9,3 +9,4 @@ vector<int> depth_first_search(const vector<vector<int>> &graph);
 bool is_acyclic(const vector<vector<int>> &graph);
 vector<int> topological_sort(const vector<vector<int>> &graph);
 vector<vector<int>> strongly_connected_components(const vector<vector<int>> &graph);
+bool is_euler_path(const vector<vector<int>> &graph, bool directed);
