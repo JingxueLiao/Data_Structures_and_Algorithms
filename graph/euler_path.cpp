@@ -41,3 +41,64 @@ bool is_euler_path_undirected_graph(const vector<vector<int>> &graph) {
 bool is_euler_path(const vector<vector<int>> &graph, bool directed) {
     return directed ? is_euler_path_directed_graph(graph) : is_euler_path_undirected_graph(graph);
 }
+
+void euler_path_undirected_graph_helper(vector<vector<int>> &graph, int cur, vector<int> &path) {
+    while (!graph[cur].empty()) {
+        int next = graph[cur].back();
+        graph[cur].pop_back();
+        for (auto p = graph[next].begin(); p != graph[next].end(); ++p) {
+            if (*p == cur) {
+                *p = graph[next].back();
+                graph[next].pop_back();
+                break;
+            }
+        }
+        euler_path_undirected_graph_helper(graph, next, path);
+    }
+    path.push_back(cur);
+    return;
+}
+
+vector<int> euler_path_undirected_graph(const vector<vector<int>> &graph) {
+    vector<int> path;
+    vector<vector<int>> tmp(graph);
+    int start = 0;
+    for (int i = 0; i < graph.size(); ++i) {
+        if (graph[i].size() % 2) {
+            start = i;
+            break;
+        }
+    }
+    euler_path_undirected_graph_helper(tmp, start, path);
+    return path;
+}
+
+void euler_path_directed_graph_helper(vector<vector<int>> &graph, int cur, vector<int> &path) {
+    while (!graph[cur].empty()) {
+        int next = graph[cur].back();
+        graph[cur].pop_back();
+        euler_path_directed_graph_helper(graph, next, path);
+    }
+    path.push_back(cur);
+    return;
+}
+
+vector<int> euler_path_directed_graph(const vector<vector<int>> &graph) {
+    vector<int> path;
+    vector<vector<int>> tmp(graph);
+    vector<int> indegrees(graph.size()), outdegrees(graph.size());
+    for (int i = 0; i < graph.size(); ++i) {
+        outdegrees[i] = graph[i].size();
+        for (auto p = graph[i].begin(); p != graph[i].end(); ++p)
+            ++indegrees[*p];
+    }
+    int start = 0;
+    for (int i = 0; i < graph.size(); ++i) {
+        if (indegrees[i] + 1 == outdegrees[i]) {
+            start = i;
+            break;
+        }
+    }
+    euler_path_directed_graph_helper(tmp, start, path);
+    return vector<int>(path.rbegin(), path.rend());
+}
