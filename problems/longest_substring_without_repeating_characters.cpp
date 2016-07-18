@@ -12,7 +12,7 @@
 
 using namespace std;
 
-int lengthOfLongestSubstring(string s) {
+int lengthOfLongestSubstring(const string &s) {
     vector<int> positions(128, -1);
     int start = 0;
     int longest = 0;

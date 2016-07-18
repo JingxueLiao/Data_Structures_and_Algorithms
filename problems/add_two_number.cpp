@@ -14,7 +14,7 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
 };
 
-ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+ListNode *addTwoNumbers(const ListNode *l1, const ListNode *l2) {
     ListNode dump(0);
     ListNode *p = &dump;
     bool carry = false;
