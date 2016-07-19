@@ -1,11 +1,9 @@
-/*
-* Implement atoi to convert a string to an integer.
-*/
+// Implement atoi to convert a string to an integer.
 
 #include <string>
-#include <climit>
+#include <climits>
 
-using namespace std
+using namespace std;
 
 int atoi(const string &str) {
     long long result = 0;

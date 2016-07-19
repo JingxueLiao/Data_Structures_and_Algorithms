@@ -1,13 +1,11 @@
-/*
-* Reverse digits of an integer.
-* 
-* Example1: x = 123, return 321
-* Example2: x = -123, return -321
-*/
+// Reverse digits of an integer.
 
-#include <climit>
+// Example1: x = 123, return 321
+// Example2: x = -123, return -321
 
-int reverse(int x) {
+#include <climits>
+
+int Reverse(int x) {
     long long origin = x, result = 0;
     bool negative = origin < 0;
     origin = negative ? -origin : origin;

@@ -1,9 +1,7 @@
-/*
-* Determine whether an integer is a palindrome.
-* Do this without extra space.
-*/
+// Determine whether an integer is a palindrome.
+// Do this without extra space.
 
-bool isPalindrome(int x) {
+bool IsPalindrome(int x) {
     if (x < 0 || x != 0 && x % 10 == 0)
         return false;
     int left = x, right = 0;

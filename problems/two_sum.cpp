@@ -1,11 +1,9 @@
-/*
-* Given an array of integers, return indices of the two numbers such that they add up to a specific target.
-* 
-* Example:
-* Given nums = [2, 7, 11, 15], target = 9,
-* Because nums[0] + nums[1] = 2 + 7 = 9,
-* return [0, 1].
-*/
+// Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+
+// Example:
+// Given nums = [2, 7, 11, 15], target = 9,
+// Because nums[0] + nums[1] = 2 + 7 = 9,
+// return [0, 1].
 
 #include <vector>
 #include <unordered_map>
@@ -13,7 +11,7 @@
 
 using namespace std;
 
-vector<int> twoSum(const vector<int> &nums, int target) {
+vector<int> TwoSum(const vector<int> &nums, int target) {
     vector<int> result(2);
     unordered_map<int, int> appeared;
     for (int i = 0; i < nums.size(); ++i) {
@@ -29,7 +27,7 @@ vector<int> twoSum(const vector<int> &nums, int target) {
 }
 
 /*
-vector<int> twoSum(const vector<int> &nums, int target) {
+vector<int> TwoSum(const vector<int> &nums, int target) {
     vector<int> sorted(nums);
     sort(sorted.begin(), sorted.end());
     int begin = 0, end = sorted.size() - 1;

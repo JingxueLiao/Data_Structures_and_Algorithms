@@ -1,12 +1,10 @@
-/*
-* Given a string S, find the longest palindromic substring in S.
-*/
+// Given a string S, find the longest palindromic substring in S.
 
 #include <string>
 
 using namespace std;
 
-string longestPalindrome(const string &s) {
+string LongestPalindrome(const string &s) {
     int i = 0, n = s.size();
     int start = 0, len = 0;
     while (i < n) {
