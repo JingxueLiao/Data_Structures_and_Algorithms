@@ -1,25 +1,20 @@
 #pragma once
 
+#include "tree_node.h"
+
 #include <vector>
 #include <stack>
 
 using namespace std;
 
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-
-    TreeNode(int v = 0, TreeNode *l = nullptr, TreeNode *r = nullptr) : val(v), left(l), right(r) {}
-};
-
-vector<int> PreorderTraversal(const TreeNode *root) {
-    vector<int> traversal;
-    stack<const TreeNode *> path;
+template <typename T>
+vector<T> PreorderTraversal(const TreeNode<T> *root) {
+    vector<T> traversal;
+    stack<const TreeNode<T> *> path;
     if (root)
         path.push(root);
     while (!path.empty()) {
-        const TreeNode *cur = path.top();
+        const TreeNode<T> *cur = path.top();
         path.pop();
         traversal.push_back(cur->val);
         if (cur->right)
@@ -30,10 +25,11 @@ vector<int> PreorderTraversal(const TreeNode *root) {
     return traversal;
 }
 
-vector<int> InorderTraversal(const TreeNode *root) {
-    vector<int> traversal;
-    const TreeNode *cur = root;
-    stack<const TreeNode *> path;
+template <typename T>
+vector<T> InorderTraversal(const TreeNode<T> *root) {
+    vector<T> traversal;
+    const TreeNode<T> *cur = root;
+    stack<const TreeNode<T> *> path;
     while (cur || !path.empty()) {
         while (cur) {
             path.push(cur);
@@ -47,10 +43,11 @@ vector<int> InorderTraversal(const TreeNode *root) {
     return traversal;
 }
 
-vector<int> PostorderTraversal(const TreeNode *root) {
-    vector<int> traversal;
-    const TreeNode *cur = root, *pre = nullptr;
-    stack<const TreeNode *> path;
+template <typename T>
+vector<T> PostorderTraversal(const TreeNode<T> *root) {
+    vector<T> traversal;
+    const TreeNode<T> *cur = root, *pre = nullptr;
+    stack<const TreeNode<T> *> path;
     while (cur || !path.empty()) {
         while (cur) {
             path.push(cur);
