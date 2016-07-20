@@ -5,7 +5,8 @@
 #include <vector>
 #include <stack>
 
-using namespace std;
+using std::vector;
+using std::stack;
 
 template <typename T>
 vector<T> PreorderTraversal(const TreeNode<T> *root) {
