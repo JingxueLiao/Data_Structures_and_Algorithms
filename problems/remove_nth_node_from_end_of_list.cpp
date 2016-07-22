@@ -8,11 +8,7 @@
 // Given n will always be valid.
 // Try to do this in one pass.
 
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(nullptr) {}
-};
+#include "list_node.h"
 
 ListNode *RemoveNthFromEnd(ListNode *head, int n) {
     ListNode dummy(0);
