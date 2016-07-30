@@ -9,15 +9,15 @@ using std::vector;
 using std::reverse;
 
 template <typename T>
-vector<T> PreorderTraversal(TreeNode<T> *root) {
+vector<T> preorder_traversal(tree_node<T> *root) {
     vector<T> traversal;
-    TreeNode<T> *cur = root;
+    tree_node<T> *cur = root;
     while (cur) {
         if (cur->left == nullptr) {
             traversal.push_back(cur->val);
             cur = cur->right;
         } else {
-            TreeNode<T> *pre = cur->left;
+            tree_node<T> *pre = cur->left;
             while (pre->right && pre->right != cur)
                 pre = pre->right;
             if (pre->right == nullptr) {
@@ -34,15 +34,15 @@ vector<T> PreorderTraversal(TreeNode<T> *root) {
 }
 
 template <typename T>
-vector<T> InorderTraversal(TreeNode<T> *root) {
+vector<T> inorder_traversal(tree_node<T> *root) {
     vector<T> traversal;
-    TreeNode<T> *cur = root;
+    tree_node<T> *cur = root;
     while (cur) {
         if (cur->left == nullptr) {
             traversal.push_back(cur->val);
             cur = cur->right;
         } else {
-            TreeNode<T> *pre = cur->left;
+            tree_node<T> *pre = cur->left;
             while (pre->right && pre->right != cur)
                 pre = pre->right;
             if (pre->right == nullptr) {
@@ -59,16 +59,16 @@ vector<T> InorderTraversal(TreeNode<T> *root) {
 }
 
 template <typename T>
-vector<T> PostorderTraversal(TreeNode<T> *root) {
+vector<T> postorder_traversal(tree_node<T> *root) {
     vector<T> traversal;
-    TreeNode<T> dummy(0);
+    tree_node<T> dummy(0);
     dummy.left = root;
-    TreeNode<T> *cur = &dummy;
+    tree_node<T> *cur = &dummy;
     while (cur) {
         if (cur->left == nullptr) {
             cur = cur->right;
         } else {
-            TreeNode<T> *pre = cur->left;
+            tree_node<T> *pre = cur->left;
             while (pre->right && pre->right != cur)
                 pre = pre->right;
             if (pre->right == nullptr) {
@@ -77,7 +77,7 @@ vector<T> PostorderTraversal(TreeNode<T> *root) {
             } else {
                 pre->right = nullptr;
                 int n = traversal.size();
-                TreeNode<T> *p = cur->left;
+                tree_node<T> *p = cur->left;
                 while (p) {
                     traversal.push_back(p->val);
                     p = p->right;
