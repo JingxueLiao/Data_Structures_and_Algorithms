@@ -9,13 +9,13 @@ using std::vector;
 using std::stack;
 
 template <typename T>
-vector<T> preorder_traversal(const tree_node<T> *root) {
+vector<T> preorder_traversal(const TreeNode<T> *root) {
     vector<T> traversal;
-    stack<const tree_node<T> *> path;
+    stack<const TreeNode<T> *> path;
     if (root)
         path.push(root);
     while (!path.empty()) {
-        const tree_node<T> *cur = path.top();
+        const TreeNode<T> *cur = path.top();
         path.pop();
         traversal.push_back(cur->val);
         if (cur->right)
@@ -27,10 +27,10 @@ vector<T> preorder_traversal(const tree_node<T> *root) {
 }
 
 template <typename T>
-vector<T> inorder_traversal(const tree_node<T> *root) {
+vector<T> inorder_traversal(const TreeNode<T> *root) {
     vector<T> traversal;
-    const tree_node<T> *cur = root;
-    stack<const tree_node<T> *> path;
+    const TreeNode<T> *cur = root;
+    stack<const TreeNode<T> *> path;
     while (cur || !path.empty()) {
         while (cur) {
             path.push(cur);
@@ -45,10 +45,10 @@ vector<T> inorder_traversal(const tree_node<T> *root) {
 }
 
 template <typename T>
-vector<T> postorder_traversal(const tree_node<T> *root) {
+vector<T> postorder_traversal(const TreeNode<T> *root) {
     vector<T> traversal;
-    const tree_node<T> *cur = root, *pre = nullptr;
-    stack<const tree_node<T> *> path;
+    const TreeNode<T> *cur = root, *pre = nullptr;
+    stack<const TreeNode<T> *> path;
     while (cur || !path.empty()) {
         while (cur) {
             path.push(cur);

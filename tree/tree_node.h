@@ -1,10 +1,16 @@
 #pragma once
 
-template <typename T>
-struct tree_node {
-    T val;
-    tree_node *left;
-    tree_node *right;
+#include <algorithm>
 
-    tree_node(const T &v, tree_node *l = nullptr, tree_node *r = nullptr) : val(v), left(l), right(r) {}
+template <typename T>
+struct TreeNode {
+    T val;
+    TreeNode *left;
+    TreeNode *right;
+
+    TreeNode (const T &v, TreeNode *l = nullptr, TreeNode *r = nullptr) :
+        val(v), left(l), right(r) { }
+
+    TreeNode (T &&v, TreeNode *l = nullptr, TreeNode *r = nullptr) :
+        val(std::move(v)), left(l), right(r) { }
 };
